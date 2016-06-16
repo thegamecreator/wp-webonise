@@ -1,0 +1,9 @@
+@keyframes mapin {
+    from {width: 100%}
+    to {width: 500px;}
+}
+#googleMap:hover{
+	animation-name: mapin;
+	animation-duration: 5s;
+	width: 500px;
+}
