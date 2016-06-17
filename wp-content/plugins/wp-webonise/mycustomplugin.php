@@ -21,6 +21,7 @@ require_once (plugin_dir_path(__FILE__).'mcp-metacode.php');
 require_once (plugin_dir_path(__FILE__).'mycustomplugin-shortcode.php');
 require_once (plugin_dir_path(__FILE__).'mycustomplugin-shortcode2.php');
 require_once (plugin_dir_path(__FILE__).'mycustomplugin-shortcode3.php');
+//require_once (plugin_dir_path(__FILE__).'mycustomplugin-widgittest.php');
 
 
 function us_admin_enqueue_script(){
