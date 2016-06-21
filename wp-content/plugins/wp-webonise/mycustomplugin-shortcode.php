@@ -19,6 +19,15 @@ function mcp_party_shortcode($atts,$content=null){
 		'update_post_term_cache'=>false,
 		'post_per_post'			=>10
 	);
+	var_dump(apply_filters( 'taxonomy-images-queried-term-image', 'theme', array(
+    'attr'       => array(
+        'alt'   => 'Custom alternative text',
+        'title' => 'Custom Title',
+        ),
+    'before'     => '<div id="my-custom-div">',
+    'after'      => '</div>',
+    'image_size' => 'medium'
+) ));
 	$party_list=new WP_Query($args);
 	$s1="<div id='party-sort' class='wrap'>
 			<div id='icon-party-admin' class='icon32'><br></div>";
