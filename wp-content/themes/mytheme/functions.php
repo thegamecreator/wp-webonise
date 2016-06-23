@@ -10,6 +10,17 @@
 		add_theme_support('menus');
 
 		register_nav_menu('Primary','Primary Top menu');
+		register_nav_menu('Secondary','Footer menu');
+		add_theme_support('post-formats',array('aside','image','video','gallery'));
+		register_sidebar(  array(
+			'name'			=>	'Sidebar',
+			'id'			=>	'sidebar-1',
+			'class'			=>	'side',
+			'before_widget'	=>	'<aside id="%1$s" class="widget %2$s">',
+			'after_widget'	=>	"</aside>",
+			'before_title'	=>	'<h1 class="widget_title">',
+			'after_title'	=>	'</h1>'
+		));
 	}
 	add_action('init','mcp_menu_setup');
 	add_theme_support( 'custom-logo', array(
@@ -19,292 +30,171 @@
 		'flex-width'  => true,
 		'header-text' => array( 'site-title', 'site-description' ),
 	) );
-	add_theme_support('post-thumbnails');
-	add_theme_support('post-formats', array('aside', 'image', 'video', 'quote', 'link'));
-	add_theme_support('custom-background', apply_filters('party_custom_background_args', array(
-        'default-color' => 'ffffff',
-        'default-image' => get_stylesheet_directory_uri() . "/images/bg.jpg",
-    )));
-	add_theme_support('html5', array(
-        'comment-list',
-        'search-form',
-        'comment-form',
-        'gallery',
-    ));
-    add_theme_support( 'title-tag' );
-    function party_customize_register($wp_customize)
-    {
-    	if ( class_exists( 'WP_Customize_Panel' ) ):
+	 
 
-			$wp_customize->add_panel( 'panel_big_title', array(
-				'priority' => 31,
-				'capability' => 'edit_theme_options',
-				'title' => __( 'Big title section', 'party-lite' )
-			));
+function party_customize_register($wp_customize) 
+{
+	$wp_customize->add_section("big_title",array(
+		"title"		=>	__("Big Title","customizer_party_sections"),
+		"priority"	=>	30,
+	));
+	$wp_customize->add_setting("big_title_field", array(
+		"default" => "Add zing to your Party",
+		"transport" => "postMessage",
+	));
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"big_title_field",
+		array(
+			"label" => __("Enter Title", "customizer_ads_code_label"),
+			"section" => "big_title",
+			"settings" => "big_title_field",
+			"type" => "input",
+		)
+	));
+	$wp_customize->add_setting("big_title_desp", array(
+		"default" => "Let your employees go crazy with the props, dress up, accessorize and get clicked at the funky photobooth like celebrities",
+		"transport" => "postMessage",
+	));
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"big_title_desp",
+		array(
+			"label" => __("Enter Description", "customizer_ads_code_label"),
+			"section" => "big_title",
+			"settings" => "big_title_desp",
+			"type" => "textarea",
+		)
+	));
+	$wp_customize->add_setting("big_title_but_label", array(
+		"default" => "Explore Packs",
+		"transport" => "postMessage",
+	));
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"big_title_but_label",
+		array(
+			"label" => __("Enter Button Label", "customizer_ads_code_label"),
+			"section" => "big_title",
+			"settings" => "big_title_but_label",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting("big_title_but_link", array(
+		"default" => "#",
+		"transport" => "postMessage",
+	));
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"big_title_but_link",
+		array(
+			"label" => __("Enter Button Link", "customizer_ads_code_label"),
+			"section" => "big_title",
+			"settings" => "big_title_but_link",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting( 'big_title_bg', array(
+		'sanitize_callback' => 'esc_url_raw',
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'big_title_bg', array(
+		'label' => __( 'Background', 'customizer_control' ),
+		'section' => 'big_title',
+		'settings' => 'big_title_bg',
+		'priority' => 1,
+	)));
+	$wp_customize->add_section("promise",array(
+		"title"		=>	__("Promises","customizer_party_sections"),
+		"priority"	=>	31,
+	));
+	$wp_customize->add_setting( 'promise1_label', array(
+		"default"	=>	__("Best quality products","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"promise1_label",
+		array(
+			"label" => __("Label 1", "customizer_ads_code_label"),
+			"section" => "promise",
+			"settings" => "promise1_label",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting( 'promise1_img', array(
+		'sanitize_callback' => 'esc_url_raw',
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'promise1_img', array(
+		'label' => __( 'image 1', 'customizer_control' ),
+		'section' => 'promise',
+		'settings' => 'promise1_img',
+		'priority' => 1,
+	)));
+	$wp_customize->add_setting( 'promise2_img', array(
+		'sanitize_callback' => 'esc_url_raw',
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'promise2_img', array(
+		'label' => __( 'image 2', 'customizer_control' ),
+		'section' => 'promise',
+		'settings' => 'promise2_img',
+		'priority' => 1,
+	)));
+	$wp_customize->add_setting( 'promise3_img', array(
+		'sanitize_callback' => 'esc_url_raw',
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'promise3_img', array(
+		'label' => __( 'image 3', 'customizer_control' ),
+		'section' => 'promise',
+		'settings' => 'promise3_img',
+		'priority' => 1,
+	)));
+	$wp_customize->add_setting( 'promise2_label', array(
+		"default"	=>	__("Free delivery","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"promise2_label",
+		array(
+			"label" => __("Label 2", "customizer_ads_code_label"),
+			"section" => "promise",
+			"settings" => "promise2_label",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting( 'promise3_label', array(
+		"default"	=>	__("Devlivers across India","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"promise3_label",
+		array(
+			"label" => __("Label 3", "customizer_ads_code_label"),
+			"section" => "promise",
+			"settings" => "promise3_label",
+			"type" => "text",
+		)
+	));
+}
 
-			$wp_customize->add_section( 'party_bigtitle_section' , array(
-				'title'       => __( 'Main content', 'party-lite' ),
-				'priority'    => 1,
-				'panel'       => 'panel_big_title'
-			));
+add_action("customize_register","party_customize_register");   
 
-			/* show/hide */
-			$wp_customize->add_setting( 'party_bigtitle_show', array(
-				'sanitize_callback' => 'party_sanitize_checkbox',
-				'transport' => 'postMessage'
-			));
+function party_customizer_live_preview()
+{
+	wp_enqueue_script("party-themecustomizer", get_template_directory_uri() . "/js/themeoption.js", array("jquery", "customize-preview"), '',  true);
+}
 
-			$wp_customize->add_control( 'party_bigtitle_show', array(
-				'type' => 'checkbox',
-				'label' => __('Hide big title section?','party-lite'),
-				'section' => 'party_bigtitle_section',
-				'priority'    => 1,
-			));
-
-			/* title */
-			$wp_customize->add_setting( 'party_bigtitle_title', array(
-				'sanitize_callback' => 'party_sanitize_input',
-				'default' => __('ONE OF THE TOP 10 MOST POPULAR THEMES ON WORDPRESS.ORG','party-lite'),
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_title', array(
-				'label'    => __( 'Title', 'party-lite' ),
-				'section'  => 'party_bigtitle_section',
-				'priority'    => 2,
-			));
-
-			/* red button */
-			$wp_customize->add_setting( 'party_bigtitle_redbutton_label', array(
-				'sanitize_callback' => 'party_sanitize_input',
-				'default' => __('Features','party-lite'),
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_redbutton_label', array(
-				'label'    => __( 'Red button label', 'party-lite' ),
-				'section'  => 'party_bigtitle_section',
-				'priority'    => 3,
-			));
-
-			$wp_customize->add_setting( 'party_bigtitle_redbutton_url', array(
-				'sanitize_callback' => 'esc_url_raw',
-				'default' => esc_url( home_url( '/' ) ).'#focus',
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_redbutton_url', array(
-				'label'    => __( 'Red button link', 'party-lite' ),
-				'section'  => 'party_bigtitle_section',
-				'priority'    => 4,
-			));
-
-			/* green button */
-			$wp_customize->add_setting( 'party_bigtitle_greenbutton_label', array(
-				'sanitize_callback' => 'party_sanitize_input',
-				'default' => __("What's inside",'party-lite'),
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_greenbutton_label', array(
-				'label'    => __( 'Green button label', 'party-lite' ),
-				'section'  => 'party_bigtitle_section',
-				'priority'    => 5,
-			));
-
-			$wp_customize->add_setting( 'party_bigtitle_greenbutton_url', array(
-				'sanitize_callback' => 'esc_url_raw',
-				'default' => esc_url( home_url( '/' ) ).'#focus',
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_greenbutton_url', array(
-				'label'    => __( 'Green button link', 'party-lite' ),
-				'section'  => 'party_bigtitle_section',
-				'priority'    => 6,
-			));
-
-			/****************************************************/
-			/************	PARALLAX IMAGES *********************/
-			/****************************************************/
-
-			$wp_customize->add_section( 'party_parallax_section' , array(
-				'title'       => __( 'Parallax effect', 'party-lite' ),
-				'priority'    => 2,
-				'panel'       => 'panel_big_title'
-			));
-
-			/* show/hide */
-			$wp_customize->add_setting( 'party_parallax_show', array(
-				'sanitize_callback' => 'party_sanitize_checkbox'
-			));
-
-			$wp_customize->add_control( 'party_parallax_show', array(
-				'type' 		=> 'checkbox',
-				'label' 	=> __('Use parallax effect?','party-lite'),
-				'section' 	=> 'party_parallax_section',
-				'priority'	=> 1,
-			));
-
-			/* IMAGE 1*/
-			$wp_customize->add_setting( 'party_parallax_img1', array(
-				'sanitize_callback' => 'esc_url_raw',
-				'default' => get_template_directory_uri() . '/images/background1.jpg'
-			));
-
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img1', array(
-				'label'    	=> __( 'Image 1', 'party-lite' ),
-				'section'  	=> 'party_parallax_section',
-				'settings' 	=> 'party_parallax_img1',
-				'priority'	=> 1,
-			)));
-
-			/* IMAGE 2 */
-			$wp_customize->add_setting( 'party_parallax_img2', array(
-				'sanitize_callback' => 'esc_url_raw',
-				'default' => get_template_directory_uri() . '/images/background2.png'
-			));
-
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img2', array(
-				'label'    	=> __( 'Image 2', 'party-lite' ),
-				'section'  	=> 'party_parallax_section',
-				'settings' 	=> 'party_parallax_img2',
-				'priority'	=> 2,
-			)));
-
-			
-
-		else:
-
-			$wp_customize->add_section( 'party_bigtitle_section' , array(
-				'title'       => __( 'Big title section', 'party-lite' ),
-				'priority'    => 31
-			));
-
-			/* show/hide */
-			$wp_customize->add_setting( 'party_bigtitle_show', array(
-				'sanitize_callback' => 'party_sanitize_checkbox',
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_show', array(
-				'type' => 'checkbox',
-				'label' => __('Hide big title section?','party-lite'),
-				'section' => 'party_bigtitle_section',
-				'priority'    => 1,
-			));
-
-			/* title */
-			$wp_customize->add_setting( 'party_bigtitle_title', array(
-				'sanitize_callback' => 'party_sanitize_input',
-				'default' => __('ONE OF THE TOP 10 MOST POPULAR THEMES ON WORDPRESS.ORG','party-lite'),
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_title', array(
-				'label'    => __( 'Title', 'party-lite' ),
-				'section'  => 'party_bigtitle_section',
-				'priority'    => 2,
-			));
-
-			/* red button */
-			$wp_customize->add_setting( 'party_bigtitle_redbutton_label', array(
-				'sanitize_callback' => 'party_sanitize_input',
-				'default' => __('Features','party-lite'),
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_redbutton_label', array(
-				'label'    => __( 'Red button label', 'party-lite' ),
-				'section'  => 'party_bigtitle_section',
-				'priority'    => 3,
-			));
-
-			$wp_customize->add_setting( 'party_bigtitle_redbutton_url', array(
-				'sanitize_callback' => 'esc_url_raw',
-				'default' => esc_url( home_url( '/' ) ).'#focus',
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_redbutton_url', array(
-				'label'    => __( 'Red button link', 'party-lite' ),
-				'section'  => 'party_bigtitle_section',
-				'priority'    => 4,
-			));
-
-			/* green button */
-			$wp_customize->add_setting( 'party_bigtitle_greenbutton_label', array(
-				'sanitize_callback' => 'party_sanitize_input',
-				'default' => __("What's inside",'party-lite'),
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_greenbutton_label', array(
-				'label'    => __( 'Green button label', 'party-lite' ),
-				'section'  => 'party_bigtitle_section',
-				'priority'    => 5,
-			));
-
-			$wp_customize->add_setting( 'party_bigtitle_greenbutton_url', array(
-				'sanitize_callback' => 'esc_url_raw',
-				'default' => esc_url( home_url( '/' ) ).'#focus',
-				'transport' => 'postMessage'
-			));
-
-			$wp_customize->add_control( 'party_bigtitle_greenbutton_url', array(
-				'label'    => __( 'Green button link', 'party-lite' ),
-				'section'  => 'party_bigtitle_section',
-				'priority'    => 6,
-			));
-
-			/****************************************************/
-			/************	PARALLAX IMAGES *********************/
-			/****************************************************/
-			$wp_customize->add_section( 'party_parallax_section' , array(
-				'title'       => __( 'Parallax effect', 'party-lite' ),
-				'priority'    => 60
-			));
-
-			/* show/hide */
-			$wp_customize->add_setting( 'party_parallax_show', array(
-				'sanitize_callback' => 'party_sanitize_checkbox'
-			));
-
-			$wp_customize->add_control( 'party_parallax_show', array(
-				'type' 		=> 'checkbox',
-				'label' 	=> __('Use parallax effect?','party-lite'),
-				'section' 	=> 'party_parallax_section',
-				'priority'	=> 1,
-			));
-
-			/* IMAGE 1*/
-			$wp_customize->add_setting( 'party_parallax_img1', array(
-				'sanitize_callback' => 'esc_url_raw',
-				'default' => get_template_directory_uri() . '/images/background1.jpg'
-			));
-
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img1', array(
-				'label'    	=> __( 'Image 1', 'party-lite' ),
-				'section'  	=> 'party_parallax_section',
-				'settings' 	=> 'party_parallax_img1',
-				'priority'	=> 1,
-			)));
-
-			/* IMAGE 2 */
-			$wp_customize->add_setting( 'party_parallax_img2', array(
-				'sanitize_callback' => 'esc_url_raw',
-				'default' => get_template_directory_uri() . '/images/background2.png'
-			));
-
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img2', array(
-				'label'    	=> __( 'Image 2', 'party-lite' ),
-				'section'  	=> 'party_parallax_section',
-				'settings' 	=> 'party_parallax_img2',
-				'priority'	=> 2,
-			)));
-
-			
-		endif;
-    }
-    add_action( 'customize_register', 'party_customize_register' );
+add_action("customize_preview_init", "party_customizer_live_preview");
 ?>

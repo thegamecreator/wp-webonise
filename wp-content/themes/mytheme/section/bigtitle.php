@@ -1,10 +1,9 @@
-<div class="home-header-wrap" style="background:url('<?php $ba=(esc_url(get_template_directory_uri().'/images/background1.jpg'));
-echo $ba?>');">
+<div class="home-header-wrap" id="big_title_bg" style="background:url('<?php echo get_theme_mod('big_title_bg'); ?>');">
 	<div class="container" style="padding:130px 140px 40px;">
 		<center>
-			<h1><strong>Add zing to your Party</strong></h1>
-			<h2>Let your employees go crazy with the props, dress up, accessorize and get clicked at the funky photobooth like celebrities</h2>
-			<a href="#"><button style="padding:15px;">Explore Packs</button></a>
+			<h1><strong id="big_title_field"><?php echo get_theme_mod("big_title_field");?></strong></h1>
+			<h2 id="big_title_desp"><?php echo get_theme_mod("big_title_desp");?></h2>
+			<a href="<?php echo get_theme_mod("big_title_but_link");?>"><button id="big_title_but_label" style="padding:15px;"><?php echo get_theme_mod("big_title_but_label");?></button></a>
 		</center>
 	</div>
 </div>
