@@ -31,4 +31,14 @@
 			<div class="well" style="padding:60px;">Basic Well</div>
 		</div>
 	</div>
+	<?php 
+	// $args = array(
+	//     'taxonomy'	=>	'product_cat',
+	//     'number'	=>	8,
+	//     'hide_empty' => false
+	// ); 
+
+	// $tax = get_terms($args);
+	// var_dump($tax);
+	 ?>
 </div>

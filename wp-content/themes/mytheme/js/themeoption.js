@@ -57,5 +57,53 @@
 			$("#promise3_img").attr('src',newval);
 		} );
 	});
+	wp.customize("team1", function(value) {
+		value.bind(function(newval) {
+			console.log(newval);
+			$("#team1").html(newval);
+		} );
+	});
+	wp.customize("team2", function(value) {
+		value.bind(function(newval) {
+			console.log(newval);
+			$("#team2").html(newval);
+		} );
+	});
+	wp.customize("team3", function(value) {
+		value.bind(function(newval) {
+			console.log(newval);
+			$("#team3").html(newval);
+		} );
+	});
+	wp.customize("team4", function(value) {
+		value.bind(function(newval) {
+			console.log(newval);
+			$("#team4").html(newval);
+		} );
+	});
+	wp.customize("team5", function(value) {
+		value.bind(function(newval) {
+			console.log(newval);
+			$("#team5").html(newval);
+		} );
+	});
+	wp.customize("team6", function(value) {
+		value.bind(function(newval) {
+			console.log(newval);
+			$("#team6").html(newval);
+		} );
+	});
+	wp.customize("team7", function(value) {
+		value.bind(function(newval) {
+			console.log(newval);
+			$("#team7").html(newval);
+		} );
+	});
+	wp.customize("team8", function(value) {
+		value.bind(function(newval) {
+			console.log(newval);
+			$("#team8").html(newval);
+		} );
+	});
 	
 })(jQuery);

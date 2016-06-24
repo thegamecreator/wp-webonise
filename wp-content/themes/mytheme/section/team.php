@@ -3,27 +3,16 @@
 		<strong>Team</strong>
 		<ul style="list-style-type: circle;">
 			<div class="col-sm-6">
-	<?php 
-
-$args = array(
-    'taxonomy'	=>	'theme',
-    'number'	=>	8
-); 
-
-$tax = get_terms($args);
-	//var_dump($tax);
-		for ($i=0; $i < 4; $i++) { 
-			?>
-			<li><?php echo $tax[$i]->name; ?></li><?php
-		}
-	?>
+				<li id="team1"><?php echo get_theme_mod("team1"); ?></li>
+				<li id="team2"><?php echo get_theme_mod("team2"); ?></li>
+				<li id="team3"><?php echo get_theme_mod("team3"); ?></li>
+				<li id="team4"><?php echo get_theme_mod("team4"); ?></li>
 			</div>
 			<div class="col-sm-6">
-	<?php	for ($i=4; $i < 8; $i++) { 
-			?>
-			<li><?php echo $tax[$i]->name; ?></li><?php
-		}
-	?>
+				<li id="team5"><?php echo get_theme_mod("team5"); ?></li>
+				<li id="team6"><?php echo get_theme_mod("team6"); ?></li>
+				<li id="team7"><?php echo get_theme_mod("team7"); ?></li>
+				<li id="team8"><?php echo get_theme_mod("team8"); ?></li>
 			</div>
 		</ul>
 	</div>

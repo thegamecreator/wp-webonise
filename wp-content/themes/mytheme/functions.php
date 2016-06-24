@@ -210,6 +210,128 @@ function party_customize_register($wp_customize)
 			"type" => "text",
 		)
 	));
+	$wp_customize->add_section("team",array(
+		"title"		=>	__("Teams","customizer_party_sections"),
+		"priority"	=>	33,
+	));
+	$wp_customize->add_setting( 'team1', array(
+		"default"	=>	__("Team1","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"team1",
+		array(
+			"label" => __("Team 1", "customizer_ads_code_label"),
+			"section" => "team",
+			"settings" => "team1",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting( 'team2', array(
+		"default"	=>	__("Team2","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"team2",
+		array(
+			"label" => __("Team 2", "customizer_ads_code_label"),
+			"section" => "team",
+			"settings" => "team2",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting( 'team3', array(
+		"default"	=>	__("Team3","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"team3",
+		array(
+			"label" => __("Team 3", "customizer_ads_code_label"),
+			"section" => "team",
+			"settings" => "team3",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting( 'team4', array(
+		"default"	=>	__("Team4","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"team4",
+		array(
+			"label" => __("Team 4", "customizer_ads_code_label"),
+			"section" => "team",
+			"settings" => "team4",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting( 'team5', array(
+		"default"	=>	__("Team5","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"team1",
+		array(
+			"label" => __("Team 1", "customizer_ads_code_label"),
+			"section" => "team",
+			"settings" => "team1",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting( 'team6', array(
+		"default"	=>	__("Team6","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"team6",
+		array(
+			"label" => __("Team 6", "customizer_ads_code_label"),
+			"section" => "team",
+			"settings" => "team6",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting( 'team7', array(
+		"default"	=>	__("Team7","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"team7",
+		array(
+			"label" => __("Team 7", "customizer_ads_code_label"),
+			"section" => "team",
+			"settings" => "team7",
+			"type" => "text",
+		)
+	));
+	$wp_customize->add_setting( 'team8', array(
+		"default"	=>	__("Team8","customizer_party_sections"),
+		'transport' => 'postMessage'
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"team8",
+		array(
+			"label" => __("Team 8", "customizer_ads_code_label"),
+			"section" => "team",
+			"settings" => "team8",
+			"type" => "text",
+		)
+	));
 }
 
 add_action("customize_register","party_customize_register");   
@@ -699,5 +821,6 @@ class contact extends WP_Widget {
 		register_widget( 'newsletter');
 	}
 	add_action( 'widgets_init', 'wpb_load_widget' );
+	wp_login_url( home_url() );
 
 ?>
