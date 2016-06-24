@@ -1,4 +1,4 @@
-<div class="teamsection">
+<div class="teamsection row">
 	<hr>
 	<center><h1><strong>Packs for all</strong></center>
 	<div class="row">

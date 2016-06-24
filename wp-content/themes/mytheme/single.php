@@ -16,15 +16,7 @@ if ( have_posts() ) {
 			<?php the_content(); 
 			?>
 		</article>
-		<div class="row">
-			<?php
-		if(comments_open()){
-			comments_template();
-		}else{
-			echo "Command is closed";
-		}
-		?>
-		</div>
+		
 		<?php
 	} // end while
 } // end if

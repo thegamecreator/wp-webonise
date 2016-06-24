@@ -1,5 +1,5 @@
 <hr>
-	<div class="custompack">
+	<div class="custompack row">
 		<center>
 			<h1><strong>Looking for customised packs</strong></h1>
 			<h3>Let us know your email id and we will get back to you in a day</h3>

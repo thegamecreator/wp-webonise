@@ -25,3 +25,8 @@ body{
 .item img{
 	border: 1px solid black;
 }
+#social li{
+	list-style: none;
+	float: left;
+	padding: 5px;
+}
